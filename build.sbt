@@ -228,15 +228,7 @@ lazy val spark = project.
     libraryDependencies ++= Seq(
       "org.apache.spark" %% "spark-sql" % "[2.0,)" % "provided"
     )
-  ).
-  // remove spark dep and skip compile if version is 2.12
-  settings(
-    libraryDependencies := (if (scalaBinaryVersion.value == "2.12") Seq.empty
-      else libraryDependencies.value),
-    skip in compile := scalaBinaryVersion.value == "2.12",
-    skip in publish := scalaBinaryVersion.value == "2.12"
   )
-
 
 lazy val flink = project.
   settings(moduleName := "vegas-flink").
